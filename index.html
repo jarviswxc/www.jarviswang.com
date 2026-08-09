@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="zh" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>王雄诚 Xiongcheng Wang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFEEE6;
+    --paper-raised:#F7F6F0;
+    --ink:#171F1B;
+    --ink-soft:#4A544D;
+    --forest:#1F4B3F;
+    --forest-deep:#12302A;
+    --cobalt:#2A4B8D;
+    --clay:#B4552E;
+    --line:#D8D6C9;
+    --line-soft:#E4E2D6;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--forest); color:var(--paper);}
+
+  [data-lang="zh"] .en{display:none !important;}
+  [data-lang="en"] .zh{display:none !important;}
+  html[data-lang="en"] body{font-family:'IBM Plex Sans', sans-serif;}
+
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .serif{font-family:'Fraunces', serif;}
+
+  a{color:inherit;}
+
+  /* ---------- Layout shell ---------- */
+  .shell{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    max-width:1240px;
+    margin:0 auto;
+  }
+  @media (max-width:880px){
+    .shell{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Nav ---------- */
+  nav.rail{
+    position:sticky;
+    top:0;
+    align-self:start;
+    height:100vh;
+    padding:40px 24px 40px 32px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    border-right:1px solid var(--line);
+  }
+  @media (max-width:880px){
+    nav.rail{
+      position:sticky;
+      height:auto;
+      flex-direction:row;
+      align-items:center;
+      justify-content:space-between;
+      border-right:none;
+      border-bottom:1px solid var(--line);
+      padding:16px 20px;
+      background:var(--paper);
+      z-index:50;
+    }
+    nav.rail .rail-links{display:none;}
+  }
+  .rail-top .mark{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:20px;
+    letter-spacing:0.01em;
+    text-decoration:none;
+  }
+  .rail-top .mark .sub{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-top:4px;
+  }
+  .rail-links{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    margin-top:56px;
+  }
+  .rail-links a{
+    text-decoration:none;
+    font-size:13px;
+    letter-spacing:0.02em;
+    color:var(--ink-soft);
+    padding:8px 0;
+    border-bottom:1px solid transparent;
+    transition:color .15s ease;
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  .rail-links a .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    color:var(--clay);
+  }
+  .rail-links a:hover{color:var(--ink);}
+  .rail-bottom{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .langtoggle{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    border:1px solid var(--ink);
+    background:transparent;
+    color:var(--ink);
+    padding:8px 12px;
+    cursor:pointer;
+    width:fit-content;
+    display:flex;
+    gap:8px;
+    align-items:center;
+  }
+  .langtoggle:hover{background:var(--ink); color:var(--paper);}
+  .langtoggle .div{opacity:.4;}
+  html[data-lang="zh"] .langtoggle .opt-zh{text-decoration:underline;}
+  html[data-lang="en"] .langtoggle .opt-en{text-decoration:underline;}
+
+  main{min-width:0;}
+
+  section{
+    padding:88px 56px;
+    border-bottom:1px solid var(--line);
+  }
+  @media (max-width:880px){
+    section{padding:56px 24px;}
+  }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--clay);
+    margin:0 0 18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:20px;
+    height:1px;
+    background:var(--clay);
+  }
+
+  h2.section-title{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(28px,3.4vw,40px);
+    margin:0 0 40px;
+    letter-spacing:-0.01em;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding-top:64px;
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:40px;
+    align-items:end;
+  }
+  @media (max-width:880px){
+    .hero{grid-template-columns:1fr; gap:56px;}
+  }
+  .hero .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--forest);
+    margin-bottom:22px;
+  }
+  h1.hero-name{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(44px,7vw,84px);
+    line-height:0.98;
+    margin:0 0 22px;
+    letter-spacing:-0.02em;
+  }
+  h1.hero-name em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--forest);
+  }
+  .hero-role{
+    font-size:19px;
+    color:var(--ink-soft);
+    max-width:480px;
+    line-height:1.6;
+    margin:0 0 34px;
+  }
+  .hero-cta{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-decoration:none;
+    padding:13px 22px;
+    display:inline-block;
+    border:1px solid var(--ink);
+  }
+  .btn.solid{background:var(--ink); color:var(--paper);}
+  .btn.solid:hover{background:var(--forest); border-color:var(--forest);}
+  .btn.ghost{background:transparent; color:var(--ink);}
+  .btn.ghost:hover{background:var(--ink); color:var(--paper);}
+
+  .stat-stack{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    border-left:1px solid var(--line);
+    padding-left:28px;
+  }
+  .stat-stack .stat{
+    padding:18px 0;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .stat-stack .stat:last-child{border-bottom:none;}
+  .stat .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:34px;
+    font-weight:500;
+    color:var(--forest-deep);
+    line-height:1;
+  }
+  .stat .label{
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-top:6px;
+  }
+
+  /* ---------- About placeholder ---------- */
+  .placeholder{
+    border:1.5px dashed #B7B4A5;
+    background:var(--paper-raised);
+    padding:36px;
+    color:var(--ink-soft);
+    font-size:14px;
+    line-height:1.8;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .placeholder .ph-title{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--clay);
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:48px;
+  }
+  @media (max-width:700px){
+    .about-grid{grid-template-columns:1fr;}
+  }
+  .photo-slot{
+    aspect-ratio:3/4;
+    border:1.5px dashed #B7B4A5;
+    background:var(--paper-raised);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:var(--ink-soft);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    padding:16px;
+  }
+
+  /* ---------- Education ---------- */
+  .edu-card{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:32px;
+    padding:32px 0;
+    border-top:1px solid var(--line);
+  }
+  .edu-card:last-child{border-bottom:0;}
+  @media (max-width:700px){
+    .edu-card{grid-template-columns:1fr; gap:12px;}
+  }
+  .edu-stat{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:30px;
+    color:var(--forest);
+  }
+  .edu-stat .small{font-size:13px; color:var(--ink-soft); display:block; margin-top:4px;}
+  .edu-school{
+    font-family:'Fraunces', serif;
+    font-size:22px;
+    font-weight:500;
+    margin:0 0 4px;
+  }
+  .edu-degree{font-size:15px; color:var(--ink-soft); margin:0 0 10px;}
+  .edu-meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--clay);
+    letter-spacing:0.04em;
+    display:flex; gap:16px; flex-wrap:wrap;
+    margin-bottom:10px;
+  }
+  .edu-courses{font-size:13px; color:var(--ink-soft); line-height:1.7;}
+
+  /* ---------- Experience cards ---------- */
+  .case{
+    display:grid;
+    grid-template-columns:1fr 200px;
+    gap:40px;
+    padding:44px 0;
+    border-top:1px solid var(--line);
+  }
+  .case:last-child{padding-bottom:0;}
+  @media (max-width:820px){
+    .case{grid-template-columns:1fr; gap:24px;}
+  }
+  .case-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:6px;
+  }
+  .case-org{
+    font-family:'Fraunces', serif;
+    font-size:24px;
+    font-weight:500;
+  }
+  .case-meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    letter-spacing:0.03em;
+  }
+  .case-role{
+    font-size:14px;
+    font-style:italic;
+    color:var(--forest-deep);
+    margin-bottom:18px;
+  }
+  .case ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:11px;
+  }
+  .case li{
+    font-size:14.5px;
+    line-height:1.7;
+    color:var(--ink);
+    padding-left:16px;
+    position:relative;
+  }
+  .case li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--clay);
+  }
+  .case li b{font-weight:600;}
+  .case-stat{
+    border-left:1px solid var(--line);
+    padding-left:24px;
+    align-self:start;
+  }
+  .case-stat .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:44px;
+    color:var(--forest);
+    line-height:1;
+  }
+  .case-stat .label{
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-top:8px;
+    line-height:1.5;
+  }
+  .case-link-slot{
+    margin-top:18px;
+    border:1.5px dashed #B7B4A5;
+    padding:14px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+
+  /* ---------- Skills ---------- */
+  .skill-groups{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:36px;
+  }
+  @media (max-width:820px){
+    .skill-groups{grid-template-columns:1fr;}
+  }
+  .skill-group h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--clay);
+    margin:0 0 16px;
+  }
+  .tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    border:1px solid var(--line);
+    padding:7px 13px;
+    font-size:13px;
+    color:var(--ink);
+    background:var(--paper-raised);
+  }
+
+  /* ---------- Work grid ---------- */
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+  }
+  @media (max-width:700px){
+    .work-grid{grid-template-columns:1fr;}
+  }
+  .work-tile{
+    aspect-ratio:16/11;
+    border:1.5px dashed #B7B4A5;
+    background:var(--paper-raised);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    color:var(--ink-soft);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.05em;
+    text-align:center;
+    padding:20px;
+  }
+  .work-tile .plus{font-size:22px; color:var(--clay);}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+  }
+  @media (max-width:820px){
+    .contact-grid{grid-template-columns:1fr;}
+  }
+  .contact-list{list-style:none; margin:0; padding:0;}
+  .contact-list li{
+    display:flex;
+    justify-content:space-between;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  .contact-list li .k{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    letter-spacing:0.06em;
+  }
+  .contact-list li a{text-decoration:none; border-bottom:1px solid var(--ink);}
+
+  footer{
+    padding:32px 56px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+  }
+  @media (max-width:880px){footer{padding:24px;}}
+
+  .fade-up{
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .fade-up.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <nav class="rail">
+    <div class="rail-top">
+      <a href="#top" class="mark">
+        王雄诚
+        <span class="sub">Xiongcheng Wang</span>
+      </a>
+      <div class="rail-links">
+        <a href="#about"><span class="num">01</span><span class="zh">关于</span><span class="en">About</span></a>
+        <a href="#education"><span class="num">02</span><span class="zh">教育背景</span><span class="en">Education</span></a>
+        <a href="#experience"><span class="num">03</span><span class="zh">经历</span><span class="en">Experience</span></a>
+        <a href="#leadership"><span class="num">04</span><span class="zh">领导力</span><span class="en">Leadership</span></a>
+        <a href="#skills"><span class="num">05</span><span class="zh">技能</span><span class="en">Skills</span></a>
+        <a href="#work"><span class="num">06</span><span class="zh">作品</span><span class="en">Work</span></a>
+        <a href="#contact"><span class="num">07</span><span class="zh">联系</span><span class="en">Contact</span></a>
+      </div>
+    </div>
+    <div class="rail-bottom">
+      <button class="langtoggle" onclick="setLang(document.documentElement.getAttribute('data-lang')==='zh'?'en':'zh')">
+        <span class="opt-zh">中</span><span class="div">/</span><span class="opt-en">EN</span>
+      </button>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" style="border-top:none;">
+      <div>
+        <div class="kicker">
+          <span class="zh">整合营销传播 · 品牌与活动策划</span>
+          <span class="en">Integrated Marketing Communications · Brand & Event Strategy</span>
+        </div>
+        <h1 class="hero-name">
+          <span class="zh">王雄诚<br><em>Jarvis</em></span>
+          <span class="en">Xiongcheng<br><em>"Jarvis"</em> Wang</span>
+        </h1>
+        <p class="hero-role">
+          <span class="zh">用数据讲故事，把想法落地成看得见的结果——从展会现场到品牌campaign，横跨中美市场的营销人。</span>
+          <span class="en">I turn ideas into measurable outcomes — from trade-show floors to brand campaigns — working across both U.S. and Chinese markets.</span>
+        </p>
+        <div class="hero-cta">
+          <a class="btn solid" href="#contact"><span class="zh">联系我</span><span class="en">Get in touch</span></a>
+          <a class="btn ghost" href="#" id="resume-link"><span class="zh">下载简历（占位链接）</span><span class="en">Download résumé (placeholder link)</span></a>
+        </div>
+      </div>
+      <div class="stat-stack">
+        <div class="stat">
+          <div class="num">1,200+</div>
+          <div class="label"><span class="zh">GTC 2025 展会到访观众</span><span class="en">GTC 2025 booth visitors</span></div>
+        </div>
+        <div class="stat">
+          <div class="num">300+</div>
+          <div class="label"><span class="zh">合作达人 / KOL 触达</span><span class="en">creators & KOLs engaged</span></div>
+        </div>
+        <div class="stat">
+          <div class="num">90%+</div>
+          <div class="label"><span class="zh">客户满意度</span><span class="en">customer satisfaction rate</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="fade-up">
+      <p class="eyebrow"><span class="zh">01 — 关于我</span><span class="en">01 — About</span></p>
+      <h2 class="section-title"><span class="zh">在这里放你的故事</span><span class="en">Put your story here</span></h2>
+      <div class="about-grid">
+        <div class="photo-slot">
+          <span class="zh">＋ 放置个人照片<br>建议 3:4 比例</span>
+          <span class="en">＋ Add your photo<br>Suggested ratio 3:4</span>
+        </div>
+        <div class="placeholder">
+          <div class="ph-title"><span class="zh">占位内容 · 待补充</span><span class="en">Placeholder · To be filled in</span></div>
+          <p>
+            <span class="zh">在这里写一段更完整的自我介绍：你为什么喜欢做营销、你关注的行业趋势、你的工作风格、一两个能代表你的小故事。可以是 2–4 段文字，也可以加入你自己拍的照片或视频。</span>
+            <span class="en">Write a fuller personal introduction here: why marketing, what industry trends you care about, how you work, and a story or two that captures who you are. Two to four paragraphs works well — feel free to add your own photos or video.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION ============ -->
+    <section id="education" class="fade-up">
+      <p class="eyebrow"><span class="zh">02 — 教育背景</span><span class="en">02 — Education</span></p>
+      <h2 class="section-title"><span class="zh">教育背景</span><span class="en">Education</span></h2>
+
+      <div class="edu-card">
+        <div class="edu-stat">3.73<span class="small">GPA / 4.0</span></div>
+        <div>
+          <h3 class="edu-school">Northwestern University · Medill</h3>
+          <p class="edu-degree"><span class="zh">整合营销传播理学硕士</span><span class="en">M.S. in Integrated Marketing Communications</span></p>
+          <div class="edu-meta">
+            <span class="zh">美国伊利诺伊州埃文斯顿</span><span class="en">Evanston, IL, USA</span>
+            <span class="mono">· <span class="zh">预计2026年12月毕业</span><span class="en">Expected Dec 2026</span></span>
+          </div>
+          <p class="edu-courses">
+            <span class="zh">核心课程：消费者洞察、市场营销研究、市场营销策略、IMC战略、数据科学基础、数据管理、媒体市场分析、营销模型、机器学习、数据叙事</span>
+            <span class="en">Coursework: Consumer Insight, Marketing Research, Marketing Strategy, IMC Strategy, Data Science Foundations, Data Management, Media Marketplaces, Marketing Models, Machine Learning, Data Storytelling</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-stat">3.67<span class="small">GPA / 4.0</span></div>
+        <div>
+          <h3 class="edu-school">University of Florida · Warrington</h3>
+          <p class="edu-degree"><span class="zh">工商管理学士，市场营销专业</span><span class="en">B.S. in Business Administration, Marketing</span></p>
+          <div class="edu-meta">
+            <span class="zh">美国佛罗里达州盖恩斯维尔</span><span class="en">Gainesville, FL, USA</span>
+            <span class="mono">· <span class="zh">2024年12月毕业</span><span class="en">Dec 2024</span></span>
+          </div>
+          <p class="edu-courses">
+            <span class="zh">核心课程：市场营销原理、微观经济学原理、公共演讲入门、商业统计学、商业与AI基础</span>
+            <span class="en">Coursework: Principles of Marketing, Principles of Microeconomics, Intro to Public Speaking, Business Statistics, Business & AI Foundations</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section id="experience" class="fade-up">
+      <p class="eyebrow"><span class="zh">03 — 工作与项目经历</span><span class="en">03 — Experience</span></p>
+      <h2 class="section-title"><span class="zh">经历</span><span class="en">Experience</span></h2>
+
+      <!-- Toast -->
+      <div class="case">
+        <div>
+          <div class="case-head">
+            <span class="case-org">Medill IMC × Toast Inc.</span>
+            <span class="case-meta mono"><span class="zh">2026年6月 – 2026年8月 · 美国伊利诺伊州埃文斯顿</span><span class="en">Jun 2026 – Aug 2026 · Evanston, IL</span></span>
+          </div>
+          <p class="case-role"><span class="zh">IMC沉浸学期项目 · 战略分析负责人 – 外部环境分析</span><span class="en">IMC Immersion Quarter · Strategic Analyst – External Situation Analysis</span></p>
+          <ul>
+            <li><b><span class="zh">竞争与市场分析：</span><span class="en">Competitive Analysis: </span></b><span class="zh">独立负责Toast品牌外部环境分析板块，涵盖市场份额概览、竞争格局、五力模型与PESTLE分析，为品牌定位战略提供研究依据</span><span class="en">Owned Toast's external situation analysis — market share, competitive landscape, Five Forces, and PESTLE — informing brand positioning strategy</span></li>
+            <li><b><span class="zh">客户调研：</span><span class="en">Customer Research: </span></b><span class="zh">主导对休闲餐饮（Casual Dining）细分市场餐厅老板的深度访谈，支持顾客旅程地图与JTBD框架的搭建</span><span class="en">Led in-depth interviews with Casual Dining restaurant owners, supporting the customer journey map and JTBD framework</span></li>
+            <li><b><span class="zh">战略协作：</span><span class="en">Strategic Collaboration: </span></b><span class="zh">与团队共同完成品牌定位、媒体策略、内容策略、效果追踪框架等5项核心交付物</span><span class="en">Co-delivered 5 core workstreams: positioning, media strategy, content strategy, and measurement framework</span></li>
+            <li><b><span class="zh">客户展示：</span><span class="en">Client Presentation: </span></b><span class="zh">代表团队在中期战略评审会上向Toast方汇报外部竞争分析成果</span><span class="en">Presented external competitive findings to Toast's team at the mid-term strategic review</span></li>
+          </ul>
+          <div class="case-link-slot">
+            <span class="zh">＋ 在这里添加该项目的展示材料链接、Deck截图或成果说明</span>
+            <span class="en">＋ Add a link, deck screenshot, or writeup of this project here</span>
+          </div>
+        </div>
+        <div class="case-stat">
+          <div class="num">5</div>
+          <div class="label"><span class="zh">核心战略交付物</span><span class="en">core strategic deliverables</span></div>
+        </div>
+      </div>
+
+      <!-- SpatialVerse -->
+      <div class="case">
+        <div>
+          <div class="case-head">
+            <span class="case-org">SpatialVerse</span>
+            <span class="case-meta mono"><span class="zh">2025年1月 – 2025年6月 · 杭州，中国</span><span class="en">Jan 2025 – Jun 2025 · Hangzhou, China</span></span>
+          </div>
+          <p class="case-role"><span class="zh">全球市场营销助理</span><span class="en">Global Marketing Assistant</span></p>
+          <ul>
+            <li><b><span class="zh">展会与活动：</span><span class="en">Events: </span></b><span class="zh">负责SpatialVerse在2025年NVIDIA GTC大会上的品牌展示，统筹展台物料与活动执行，4天展会吸引超过1,200名观众到访，促成50余条优质商业线索</span><span class="en">Ran SpatialVerse's presence at NVIDIA GTC 2025 — coordinating booth assets and on-site execution — drawing 1,200+ visitors and 50+ qualified leads over 4 days</span></li>
+            <li><b><span class="zh">内容运营：</span><span class="en">Content: </span></b><span class="zh">策划并发布15篇LinkedIn推文，推动互动量提升32%，累计曝光量超过4万次</span><span class="en">Planned and published 15 LinkedIn posts, driving a 32% engagement lift and 40k+ impressions</span></li>
+            <li><b><span class="zh">市场调研：</span><span class="en">Research: </span></b><span class="zh">参与IROS 2025与WAIC 2025期间的竞品调研，撰写分析报告为公司展会与合作战略提供依据</span><span class="en">Conducted competitive research at IROS 2025 and WAIC 2025, informing exhibition and partnership strategy</span></li>
+          </ul>
+          <div class="case-link-slot">
+            <span class="zh">＋ 在这里添加展台照片、社媒帖子截图或活动视频</span>
+            <span class="en">＋ Add booth photos, social post screenshots, or event video here</span>
+          </div>
+        </div>
+        <div class="case-stat">
+          <div class="num">50+</div>
+          <div class="label"><span class="zh">GTC 展会商业线索</span><span class="en">qualified leads at GTC</span></div>
+        </div>
+      </div>
+
+      <!-- Vibe Inc. -->
+      <div class="case">
+        <div>
+          <div class="case-head">
+            <span class="case-org">Vibe Inc. <span class="zh" style="font-size:14px; color:var(--ink-soft);">（昼光科技有限公司）</span></span>
+            <span class="case-meta mono"><span class="zh">2024年5月 – 2024年7月 · 杭州，中国</span><span class="en">May 2024 – Jul 2024 · Hangzhou, China</span></span>
+          </div>
+          <p class="case-role"><span class="zh">网红营销实习生</span><span class="en">Influencer Marketing Intern</span></p>
+          <ul>
+            <li><b><span class="zh">SEO优化：</span><span class="en">SEO: </span></b><span class="zh">为Vibe Plus服务撰写符合SEO标准的标题及元描述，带动自然搜索流量提升15.4%</span><span class="en">Wrote SEO-optimized titles and meta descriptions for Vibe Plus, lifting organic search traffic 15.4%</span></li>
+            <li><b><span class="zh">网红合作：</span><span class="en">Influencer Partnerships: </span></b><span class="zh">联系200余位YouTube及Instagram网红，促成14次内容合作，互动率提升13%</span><span class="en">Reached out to 200+ YouTube and Instagram creators, securing 14 content collaborations and a 13% engagement lift</span></li>
+            <li><b><span class="zh">客户案例：</span><span class="en">Case Studies: </span></b><span class="zh">与2位重点合作网红进行访谈，制作客户使用案例，助力产品咨询量增长15%</span><span class="en">Interviewed 2 key creators to produce customer case studies, contributing to a 15% rise in product inquiries</span></li>
+          </ul>
+          <div class="case-link-slot">
+            <span class="zh">＋ 在这里添加你参与的合作内容或案例研究链接</span>
+            <span class="en">＋ Add links to the collaborations or case studies you produced</span>
+          </div>
+        </div>
+        <div class="case-stat">
+          <div class="num">14</div>
+          <div class="label"><span class="zh">达成的内容合作</span><span class="en">content collaborations secured</span></div>
+        </div>
+      </div>
+
+      <!-- Panda Remit -->
+      <div class="case">
+        <div>
+          <div class="case-head">
+            <span class="case-org">Panda Remit <span class="zh" style="font-size:14px; color:var(--ink-soft);">（熊猫速汇）</span></span>
+            <span class="case-meta mono"><span class="zh">2023年5月 – 2023年7月 · 杭州，中国</span><span class="en">May 2023 – Jul 2023 · Hangzhou, China</span></span>
+          </div>
+          <p class="case-role"><span class="zh">数字营销实习生 – 欧洲部门</span><span class="en">Digital Marketing Intern – Europe Department</span></p>
+          <ul>
+            <li><b><span class="zh">内容运营：</span><span class="en">Content: </span></b><span class="zh">设计并发布100余篇推广内容至Instagram、Facebook及Twitter，平均每篇获得300余次互动</span><span class="en">Designed and published 100+ promotional posts across Instagram, Facebook, and Twitter, averaging 300+ engagements each</span></li>
+            <li><b><span class="zh">客户服务：</span><span class="en">Customer Service: </span></b><span class="zh">通过邮件协助50余位客户解决账户问题，客户满意度达90%以上</span><span class="en">Resolved account issues for 50+ customers via email, achieving 90%+ satisfaction</span></li>
+            <li><b><span class="zh">产品反馈：</span><span class="en">Product Feedback: </span></b><span class="zh">作为新业务平台"Linkstarry"最早的beta用户之一，通过双周会议向开发团队反馈</span><span class="en">As an early beta user of "Linkstarry," fed back to the dev team via biweekly meetings</span></li>
+          </ul>
+        </div>
+        <div class="case-stat">
+          <div class="num">90%+</div>
+          <div class="label"><span class="zh">客户满意度</span><span class="en">customer satisfaction</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LEADERSHIP ============ -->
+    <section id="leadership" class="fade-up">
+      <p class="eyebrow"><span class="zh">04 — 领导力与课外经历</span><span class="en">04 — Leadership</span></p>
+      <h2 class="section-title"><span class="zh">领导力与课外经历</span><span class="en">Leadership & Involvement</span></h2>
+      <div class="case" style="border-top:none;">
+        <div>
+          <div class="case-head">
+            <span class="case-org"><span class="zh">佛罗里达大学中国学生学者联合会</span><span class="en">Chinese Students & Scholars Association, UF</span></span>
+            <span class="case-meta mono"><span class="zh">2022年7月至今 · 美国佛罗里达州盖恩斯维尔</span><span class="en">Jul 2022 – Present · Gainesville, FL</span></span>
+          </div>
+          <p class="case-role"><span class="zh">社交媒体部长</span><span class="en">Social Media Director</span></p>
+          <ul>
+            <li><span class="zh">拍摄并剪辑8个抖音视频，累计获得超过1万次播放与800余次点赞</span><span class="en">Filmed and edited 8 TikTok videos, earning 10k+ views and 800+ likes</span></li>
+            <li><span class="zh">策划并主持每年迎新活动，服务300余名新入学中国留学生</span><span class="en">Planned and hosted the annual welcome event, serving 300+ incoming Chinese students</span></li>
+          </ul>
+        </div>
+        <div class="case-stat">
+          <div class="num">10K+</div>
+          <div class="label"><span class="zh">短视频累计播放</span><span class="en">short-video views</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section id="skills" class="fade-up">
+      <p class="eyebrow"><span class="zh">05 — 技能</span><span class="en">05 — Skills</span></p>
+      <h2 class="section-title"><span class="zh">专业技能</span><span class="en">Skills</span></h2>
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h3><span class="zh">技术技能</span><span class="en">Technical</span></h3>
+          <div class="tags">
+            <span class="tag">Microsoft Office</span>
+            <span class="tag">CapCut</span>
+            <span class="tag"><span class="zh">摄影</span><span class="en">Photography</span></span>
+            <span class="tag">Python</span>
+            <span class="tag">Agile</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3><span class="zh">语言</span><span class="en">Languages</span></h3>
+          <div class="tags">
+            <span class="tag"><span class="zh">普通话（母语）</span><span class="en">Mandarin (Native)</span></span>
+            <span class="tag"><span class="zh">英语（流利）</span><span class="en">English (Fluent)</span></span>
+            <span class="tag"><span class="zh">常山方言（流利）</span><span class="en">Changshan Dialect (Fluent)</span></span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3><span class="zh">兴趣爱好</span><span class="en">Interests</span></h3>
+          <div class="tags">
+            <span class="tag"><span class="zh">足球</span><span class="en">Soccer</span></span>
+            <span class="tag"><span class="zh">摩托车骑行</span><span class="en">Motorcycling</span></span>
+            <span class="tag"><span class="zh">摄影</span><span class="en">Photography</span></span>
+            <span class="tag"><span class="zh">唱歌</span><span class="en">Singing</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WORK / PORTFOLIO PLACEHOLDER ============ -->
+    <section id="work" class="fade-up">
+      <p class="eyebrow"><span class="zh">06 — 作品集</span><span class="en">06 — Work</span></p>
+      <h2 class="section-title"><span class="zh">在这里放具体作品</span><span class="en">Add your work here</span></h2>
+      <p style="max-width:560px; color:var(--ink-soft); font-size:14px; line-height:1.8; margin-bottom:32px;">
+        <span class="zh">这里留了一个作品网格，方便你之后放具体的项目案例：Campaign Deck截图、视频剪辑作品、活动现场照片、数据分析报告封面等，每一格可以链接到详细页面或PDF。</span>
+        <span class="en">This grid is reserved for your own project samples — campaign deck screenshots, edited videos, event photos, or report covers. Each tile can link out to a detail page or PDF.</span>
+      </p>
+      <div class="work-grid">
+        <div class="work-tile"><span class="plus">＋</span><span class="zh">添加作品案例 01</span><span class="en">Add work sample 01</span></div>
+        <div class="work-tile"><span class="plus">＋</span><span class="zh">添加作品案例 02</span><span class="en">Add work sample 02</span></div>
+        <div class="work-tile"><span class="plus">＋</span><span class="zh">添加作品案例 03</span><span class="en">Add work sample 03</span></div>
+        <div class="work-tile"><span class="plus">＋</span><span class="zh">添加作品案例 04</span><span class="en">Add work sample 04</span></div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="fade-up" style="border-bottom:none;">
+      <p class="eyebrow"><span class="zh">07 — 联系方式</span><span class="en">07 — Contact</span></p>
+      <h2 class="section-title"><span class="zh">联系我</span><span class="en">Get in touch</span></h2>
+      <div class="contact-grid">
+        <ul class="contact-list">
+          <li><span class="k">EMAIL</span><a href="mailto:jarviswxc@gmail.com">jarviswxc@gmail.com</a></li>
+          <li><span class="k"><span class="zh">电话</span><span class="en">PHONE</span></span><span>(352) 328-2023</span></li>
+          <li><span class="k"><span class="zh">地址</span><span class="en">LOCATION</span></span><span><span class="zh">埃文斯顿，伊利诺伊州</span><span class="en">Evanston, IL</span></span></li>
+        </ul>
+        <div class="placeholder">
+          <div class="ph-title"><span class="zh">占位内容 · 待补充</span><span class="en">Placeholder · To be filled in</span></div>
+          <p>
+            <span class="zh">在这里添加你的 LinkedIn、微信二维码、Instagram 或个人作品集平台链接。</span>
+            <span class="en">Add your LinkedIn, WeChat QR code, Instagram, or portfolio platform links here.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 Xiongcheng "Jarvis" Wang</span>
+      <span class="mono">www.xiongchengwang.com</span>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  function setLang(lang){
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+  }
+
+  // fade-up on scroll
+  var els = document.querySelectorAll('.fade-up');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); }
+    });
+  }, {threshold:0.08});
+  els.forEach(function(el){ io.observe(el); });
+
+  // resume link placeholder notice
+  document.getElementById('resume-link').addEventListener('click', function(e){
+    e.preventDefault();
+    var msg = document.documentElement.getAttribute('data-lang') === 'zh'
+      ? '请把这个链接换成你简历 PDF 的实际地址。'
+      : 'Replace this link with the actual URL to your résumé PDF.';
+    alert(msg);
+  });
+</script>
+</body>
+</html>

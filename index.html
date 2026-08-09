@@ -322,6 +322,32 @@
   a:focus-visible, button:focus-visible{
     outline:2px solid var(--clay); outline-offset:3px; border-radius:3px;
   }
+  /* ---- 移动端修正 ---- */
+  html{
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
+  }
+  @media (max-width:520px){
+    body{font-size:15.5px;}
+    h1{font-size:29px; line-height:1.3; margin-bottom:22px;}
+    .hero{padding:40px 0 44px;}
+    .hero p.lede{font-size:16px; margin-bottom:28px;}
+    .hero-grid{gap:32px;}
+    .brand{font-size:17px;}
+    .navlinks a{font-size:13px;}
+    .portrait-wrap{max-width:150px;}
+    .portrait-tag{
+      position:static; display:inline-block;
+      margin-top:12px; font-size:10.5px; padding:5px 12px;
+    }
+    h2{font-size:24px;}
+    .sec-head{margin-bottom:32px;}
+    .proj-side .metric{font-size:32px;}
+    .proj-title{font-size:20px;}
+    .proj p, .proj li{font-size:15.5px;}
+    .pull{font-size:18px; padding-left:16px;}
+    .cbig{font-size:22px;}
+  }
 </style>
 </head>
 <body>

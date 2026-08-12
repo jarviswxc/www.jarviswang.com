@@ -255,19 +255,50 @@
     margin:0 0 12px;
   }
   .shots{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:10px;
-    max-width:640px;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
+    align-items:start; max-width:660px;
   }
-  @media (max-width:560px){ .shots{grid-template-columns:repeat(2,1fr); gap:8px;} }
+  @media (max-width:560px){ .shots{grid-template-columns:repeat(2,1fr); gap:9px;} }
   .shot{margin:0;}
-  .shot a{display:block; text-decoration:none;}
+  .shot button{
+    display:block; width:100%; padding:0; border:0; background:none;
+    cursor:zoom-in; font:inherit; text-align:left;
+  }
   .shot img{
-    width:100%; aspect-ratio:4/3; object-fit:cover;
-    border-radius:6px; display:block;
+    width:100%; height:auto; display:block;
+    border-radius:6px;
     border:1px solid var(--line-2); background:var(--paper-2);
     transition:opacity .18s ease;
   }
-  .shot a:hover img{opacity:.82;}
+  .shot button:hover img{opacity:.82;}
+
+  /* ---------- LIGHTBOX ---------- */
+  .lb{
+    position:fixed; inset:0; z-index:200;
+    background:rgba(20,19,16,.92);
+    display:none; align-items:center; justify-content:center;
+    padding:32px;
+    cursor:zoom-out;
+  }
+  .lb.on{display:flex;}
+  .lb img{
+    max-width:100%; max-height:100%;
+    object-fit:contain; border-radius:4px;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+  }
+  .lb-x{
+    position:absolute; top:18px; right:22px;
+    width:38px; height:38px; border-radius:50%;
+    border:1px solid rgba(250,249,245,.3); background:transparent;
+    color:var(--paper); font-size:17px; line-height:1;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .lb-x:hover{background:rgba(250,249,245,.12);}
+  .lb-cap{
+    position:absolute; bottom:22px; left:0; right:0; text-align:center;
+    font-family:var(--sans); font-size:12.5px; color:rgba(250,249,245,.65);
+  }
+  @media (max-width:560px){ .lb{padding:16px;} }
   .shot figcaption{
     font-family:var(--sans); font-size:11px; color:var(--muted);
     margin-top:6px; line-height:1.45;
@@ -496,19 +527,19 @@
               <p class="media-cap"><span class="zh">NVIDIA GTC 2025</span><span class="en">NVIDIA GTC 2025</span></p>
               <div class="shots">
                 <figure class="shot">
-                  <a href="SpatialVerse/GTC-1.png" target="_blank" rel="noopener"><img src="SpatialVerse/GTC-1.png" alt="" loading="lazy"></a>
+                  <button type="button" onclick="lb(this)" data-src="SpatialVerse/GTC-1.png" data-zh="展台物料设计" data-en="Booth collateral design"><img src="SpatialVerse/GTC-1.png" alt="" loading="lazy"></button>
                   <figcaption><span class="zh">展台物料设计</span><span class="en">Booth collateral design</span></figcaption>
                 </figure>
                 <figure class="shot">
-                  <a href="SpatialVerse/GTC-2.png" target="_blank" rel="noopener"><img src="SpatialVerse/GTC-2.png" alt="" loading="lazy"></a>
+                  <button type="button" onclick="lb(this)" data-src="SpatialVerse/GTC-2.png" data-zh="展台物料设计" data-en="Booth collateral design"><img src="SpatialVerse/GTC-2.png" alt="" loading="lazy"></button>
                   <figcaption><span class="zh">展台物料设计</span><span class="en">Booth collateral design</span></figcaption>
                 </figure>
                 <figure class="shot">
-                  <a href="SpatialVerse/GTC-3.png" target="_blank" rel="noopener"><img src="SpatialVerse/GTC-3.png" alt="" loading="lazy"></a>
+                  <button type="button" onclick="lb(this)" data-src="SpatialVerse/GTC-3.png" data-zh="展前宣传图" data-en="Pre-show promotion"><img src="SpatialVerse/GTC-3.png" alt="" loading="lazy"></button>
                   <figcaption><span class="zh">展前宣传图</span><span class="en">Pre-show promotion</span></figcaption>
                 </figure>
                 <figure class="shot">
-                  <a href="SpatialVerse/GTC-4.jpg" target="_blank" rel="noopener"><img src="SpatialVerse/GTC-4.jpg" alt="" loading="lazy"></a>
+                  <button type="button" onclick="lb(this)" data-src="SpatialVerse/GTC-4.jpg" data-zh="现场活动" data-en="On-site activity"><img src="SpatialVerse/GTC-4.jpg" alt="" loading="lazy"></button>
                   <figcaption><span class="zh">现场活动</span><span class="en">On-site activity</span></figcaption>
                 </figure>
               </div>
@@ -518,11 +549,11 @@
               <p class="media-cap"><span class="zh">FAIR plus 机器人全产业链接会</span><span class="en">FAIR plus Robotics Expo</span></p>
               <div class="shots">
                 <figure class="shot">
-                  <a href="SpatialVerse/Fairplus.png" target="_blank" rel="noopener"><img src="SpatialVerse/Fairplus.png" alt="" loading="lazy"></a>
+                  <button type="button" onclick="lb(this)" data-src="SpatialVerse/Fairplus.png" data-zh="展会宣传图" data-en="Show promotion"><img src="SpatialVerse/Fairplus.png" alt="" loading="lazy"></button>
                   <figcaption><span class="zh">展会宣传图</span><span class="en">Show promotion</span></figcaption>
                 </figure>
                 <figure class="shot">
-                  <a href="SpatialVerse/Fairplus.jpg" target="_blank" rel="noopener"><img src="SpatialVerse/Fairplus.jpg" alt="" loading="lazy"></a>
+                  <button type="button" onclick="lb(this)" data-src="SpatialVerse/Fairplus.jpg" data-zh="现场照片" data-en="On-site photo"><img src="SpatialVerse/Fairplus.jpg" alt="" loading="lazy"></button>
                   <figcaption><span class="zh">现场照片</span><span class="en">On-site photo</span></figcaption>
                 </figure>
               </div>
@@ -532,11 +563,11 @@
               <p class="media-cap"><span class="zh">2025 杭州人形机器人与机器人技术展览会</span><span class="en">Hangzhou Robot Technology Exhibition 2025</span></p>
               <div class="shots">
                 <figure class="shot">
-                  <a href="SpatialVerse/showcase-Chinese.png" target="_blank" rel="noopener"><img src="SpatialVerse/showcase-Chinese.png" alt="" loading="lazy"></a>
+                  <button type="button" onclick="lb(this)" data-src="SpatialVerse/showcase-Chinese.png" data-zh="中文版宣传图" data-en="Chinese version"><img src="SpatialVerse/showcase-Chinese.png" alt="" loading="lazy"></button>
                   <figcaption><span class="zh">中文版宣传图</span><span class="en">Chinese version</span></figcaption>
                 </figure>
                 <figure class="shot">
-                  <a href="SpatialVerse/showcase-English.png" target="_blank" rel="noopener"><img src="SpatialVerse/showcase-English.png" alt="" loading="lazy"></a>
+                  <button type="button" onclick="lb(this)" data-src="SpatialVerse/showcase-English.png" data-zh="英文版宣传图" data-en="English version"><img src="SpatialVerse/showcase-English.png" alt="" loading="lazy"></button>
                   <figcaption><span class="zh">英文版宣传图</span><span class="en">English version</span></figcaption>
                 </figure>
               </div>
@@ -762,7 +793,33 @@
 
 </main>
 
+<div class="lb" id="lightbox" onclick="lbClose(event)">
+  <button class="lb-x" type="button" onclick="lbClose(event, true)" aria-label="Close">✕</button>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
+
 <script>
+
+  function lb(btn){
+    var box = document.getElementById('lightbox');
+    document.getElementById('lbImg').src = btn.dataset.src;
+    var isZh = document.documentElement.getAttribute('data-lang') === 'zh';
+    document.getElementById('lbCap').textContent = isZh ? btn.dataset.zh : btn.dataset.en;
+    box.classList.add('on');
+    document.body.style.overflow = 'hidden';
+  }
+  function lbClose(e, force){
+    if(!force && e.target.tagName === 'IMG') return;
+    document.getElementById('lightbox').classList.remove('on');
+    document.getElementById('lbImg').src = '';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') lbClose(e, true);
+  });
+
   function toggleLang(){
     var el = document.documentElement;
     var next = el.getAttribute('data-lang') === 'zh' ? 'en' : 'zh';

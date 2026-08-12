@@ -221,6 +221,48 @@
     width:9px; height:1px; background:var(--clay);
   }
 
+
+  /* ---------- MEDIA (project assets) ---------- */
+  .media{margin-top:26px;}
+  .media-cap{
+    font-family:var(--sans); font-size:11px; font-weight:500;
+    letter-spacing:.12em; text-transform:uppercase; color:var(--muted);
+    margin:0 0 12px;
+  }
+  .shots{
+    columns:2; column-gap:10px;
+  }
+  @media (max-width:560px){ .shots{columns:1;} }
+  .shot{margin:0 0 10px; break-inside:avoid; -webkit-column-break-inside:avoid;}
+  .shot img{
+    width:100%; border-radius:8px; display:block;
+    border:1px solid var(--line-2); background:var(--paper-2);
+  }
+  .shot figcaption{
+    font-family:var(--sans); font-size:11.5px; color:var(--muted);
+    margin-top:7px; line-height:1.5;
+  }
+  .media video{
+    width:100%; border-radius:8px; display:block;
+    border:1px solid var(--line-2); background:#000;
+  }
+  .docs{display:flex; flex-direction:column; gap:8px;}
+  .doc{
+    display:flex; align-items:center; gap:12px;
+    padding:13px 16px; border:1px solid var(--line); border-radius:8px;
+    text-decoration:none; background:var(--paper);
+    font-family:var(--sans); font-size:13.5px; color:var(--ink);
+    transition:border-color .18s ease, background .18s ease;
+  }
+  .doc:hover{border-color:var(--ink); background:var(--paper-2);}
+  .doc .ico{
+    font-family:var(--sans); font-size:9.5px; font-weight:600; letter-spacing:.06em;
+    color:var(--clay); border:1px solid var(--clay); border-radius:3px;
+    padding:2px 5px; flex-shrink:0;
+  }
+  .doc .nm{flex:1; min-width:0;}
+  .doc .go{color:var(--muted); font-size:12px; flex-shrink:0;}
+
   .slot{
     margin-top:22px; border:1px dashed #C9C5B7; border-radius:8px;
     background:var(--paper-2);
@@ -413,8 +455,80 @@
               <li><span class="zh">策划并发布 15 篇 LinkedIn 内容，互动量提升 32%，累计曝光 4 万余次</span><span class="en">Planned 15 LinkedIn posts: 32% engagement lift, 40k+ impressions</span></li>
               <li><span class="zh">在 IROS 2025 与 WAIC 2025 完成同业调研，形成的报告成为公司后续展会规划与合作方筛选的参考</span><span class="en">Completed competitor research at IROS 2025 and WAIC 2025; the resulting report guided later exhibition planning and partner selection</span></li>
             </ul>
-            <div class="slot">
-              <b>＋</b> <span class="zh">这里放展台照片、社媒截图或现场视频，把这段文字换成 <code>&lt;img src="gtc.jpg"&gt;</code> 即可</span><span class="en">Drop booth photos, post screenshots, or event video here — replace this slot with <code>&lt;img src="gtc.jpg"&gt;</code></span>
+            <div class="media">
+              <p class="media-cap"><span class="zh">NVIDIA GTC 2025</span><span class="en">NVIDIA GTC 2025</span></p>
+              <div class="shots">
+                <figure class="shot">
+                  <img src="SpatialVerse/GTC-1.png" alt="" loading="lazy">
+                  <figcaption><span class="zh">展台物料设计</span><span class="en">Booth collateral design</span></figcaption>
+                </figure>
+                <figure class="shot">
+                  <img src="SpatialVerse/GTC-2.png" alt="" loading="lazy">
+                  <figcaption><span class="zh">展台物料设计</span><span class="en">Booth collateral design</span></figcaption>
+                </figure>
+                <figure class="shot">
+                  <img src="SpatialVerse/GTC-3.png" alt="" loading="lazy">
+                  <figcaption><span class="zh">展前宣传图</span><span class="en">Pre-show promotion</span></figcaption>
+                </figure>
+                <figure class="shot">
+                  <img src="SpatialVerse/GTC-4.jpg" alt="" loading="lazy">
+                  <figcaption><span class="zh">现场活动</span><span class="en">On-site activity</span></figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="media">
+              <p class="media-cap"><span class="zh">FAIR plus 机器人全产业链接会</span><span class="en">FAIR plus Robotics Expo</span></p>
+              <div class="shots">
+                <figure class="shot">
+                  <img src="SpatialVerse/Fairplus.png" alt="" loading="lazy">
+                  <figcaption><span class="zh">展会宣传图</span><span class="en">Show promotion</span></figcaption>
+                </figure>
+                <figure class="shot">
+                  <img src="SpatialVerse/Fairplus.jpg" alt="" loading="lazy">
+                  <figcaption><span class="zh">现场照片</span><span class="en">On-site photo</span></figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="media">
+              <p class="media-cap"><span class="zh">2025 杭州人形机器人与机器人技术展览会</span><span class="en">Hangzhou Robot Technology Exhibition 2025</span></p>
+              <div class="shots">
+                <figure class="shot">
+                  <img src="SpatialVerse/showcase-Chinese.png" alt="" loading="lazy">
+                  <figcaption><span class="zh">中文版宣传图</span><span class="en">Chinese version</span></figcaption>
+                </figure>
+                <figure class="shot">
+                  <img src="SpatialVerse/showcase-English.png" alt="" loading="lazy">
+                  <figcaption><span class="zh">英文版宣传图</span><span class="en">English version</span></figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="media">
+              <p class="media-cap"><span class="zh">宣传视频</span><span class="en">Promotional video</span></p>
+              <video src="SpatialVerse/video-1.mp4" controls playsinline preload="metadata"></video>
+            </div>
+
+            <div class="media">
+              <p class="media-cap"><span class="zh">相关物料</span><span class="en">Collateral</span></p>
+              <div class="docs">
+                <a class="doc" href="SpatialVerse/pdf-1.pdf" target="_blank" rel="noopener">
+                  <span class="ico">PDF</span>
+                  <span class="nm"><span class="zh">产品折页 · 中文版</span><span class="en">Product brochure · Chinese</span></span>
+                  <span class="go">↗</span>
+                </a>
+                <a class="doc" href="SpatialVerse/pdf-2.pdf" target="_blank" rel="noopener">
+                  <span class="ico">PDF</span>
+                  <span class="nm"><span class="zh">产品折页 · 英文版</span><span class="en">Product brochure · English</span></span>
+                  <span class="go">↗</span>
+                </a>
+                <a class="doc" href="SpatialVerse/pdf-3.pdf" target="_blank" rel="noopener">
+                  <span class="ico">PDF</span>
+                  <span class="nm"><span class="zh">品牌宣传演示文稿</span><span class="en">Brand presentation deck</span></span>
+                  <span class="go">↗</span>
+                </a>
+              </div>
             </div>
           </div>
         </article>
